@@ -6,7 +6,9 @@
 # Determinación de la primalidad y descomposición de un número en factores primos
 
 def esPrimo(numero):
-    # Devuelve True si su argumento es primo, y False si no lo es.
+    """
+    Devuelve True si su argumento es primo, y False si no lo es.
+    """
     if numero <= 1:
         return False
     for i in range(2, int(numero**0.5) + 1):
@@ -15,7 +17,9 @@ def esPrimo(numero):
     return True
 
 def primos(numero): 
-    # Devuelve una tupla con todos los números primos menores que su argumento.
+    """
+    Devuelve una tupla con todos los números primos menores que su argumento.
+    """
     resultado=[]
     for i in range(1,numero-1):
         if esPrimo(i):
@@ -23,7 +27,9 @@ def primos(numero):
     return tuple(resultado)
 
 def descompon(numero):
-    # Devuelve una tupla con la descomposición en factores primos de su argumento.
+    """
+    Devuelve una tupla con la descomposición en factores primos de su argumento.
+    """
     resultado = []
     divisor = 2
     while numero > 1:
@@ -47,7 +53,9 @@ Estas dos funciones deben cumplir las condiciones siguientes:
 """
 
 def mcm(numero1, numero2): 
-    # Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
     mayor = max(numero1, numero2)  # Empezamos con el mayor de los dos números
     while True:
         if mayor % numero1 == 0 and mayor % numero2 == 0:
@@ -55,7 +63,9 @@ def mcm(numero1, numero2):
         mayor += 1
 
 def mcd(numero1, numero2): 
-    # Devuelve el máximo común divisor de sus argumentos.
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    """
     while numero2 != 0:
         numero1, numero2 = numero2, numero1 % numero2
     return numero1
@@ -63,14 +73,18 @@ def mcd(numero1, numero2):
 # Obtención del mínimo común múltiplo y el máximo común divisor para un número arbitrario de argumentos
 
 def mcmN(*numeros): 
-    # Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
     resultado = 1
     for num in numeros:
         resultado = mcm(resultado,num)
     return resultado
 
 def mcdN(*numeros): 
-    # Devuelve el máximo común divisor de sus argumentos.  
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    """
     resultado = numeros[0]  # Inicializamos con el primer número
     for num in numeros[1:]:  # Iteramos desde el segundo número en adelante
         resultado = mcd(resultado, num)
