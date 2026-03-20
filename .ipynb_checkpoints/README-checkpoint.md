@@ -144,7 +144,7 @@ def mcm(*numeros):
         int: MCM de la lista de numeros.
 
     Tests:
-         >>> mcm(90, 14)
+        >>> mcm(90, 14)
         630
         >>> mcm(42, 60, 70, 63)
         1260
@@ -243,7 +243,8 @@ comprobarse las siguientes condiciones:
 Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
-![Foto de los doctest con la función verbosed activada](doctest.png)
+![Foto1 de los doctest con la función verbosed activada](doctest1.png)
+![Foto2 de los doctest con la función verbosed activada](doctest2.png)
 
 #### Código desarrollado
 
@@ -353,7 +354,7 @@ def mcm(*numeros):
         int: MCM de la lista de numeros.
 
     Tests:
-         >>> mcm(90, 14)
+        >>> mcm(90, 14)
         630
         >>> mcm(42, 60, 70, 63)
         1260

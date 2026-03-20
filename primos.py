@@ -100,7 +100,7 @@ def mcm(*numeros):
         int: MCM de la lista de numeros.
 
     Tests:
-         >>> mcm(90, 14)
+        >>> mcm(90, 14)
         630
         >>> mcm(42, 60, 70, 63)
         1260
