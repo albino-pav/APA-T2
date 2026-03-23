@@ -6,7 +6,7 @@
 
 A continuación se muestra una captura de pantalla con la ejecución en modo verboso de los tests unitarios:
 
-![Tests](tests_primos.png)
+![Tests](tests_primos.PNG)
 
 ## Código desarrollado
 
