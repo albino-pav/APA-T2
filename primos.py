@@ -1,18 +1,37 @@
-# Segunda tarea de APA 2026: Manejo de números primos
+#!/usr/bin/env python3
+"""Segunda tarea de APA 2026: manejo de números primos.
 
-**Nombre y apellidos:** Pau Pont Camp
+Autor: Pau Pont Camp
 
-## Ejecución de los tests unitarios
+Este módulo incluye funciones para trabajar con números primos,
+la descomposición en factores primos, el mínimo común múltiplo y
+el máximo común divisor.
 
-A continuación se muestra una captura de pantalla con la ejecución en modo verboso de los tests unitarios:
+Tests unitarios
+===============
 
-![Tests](tests_primos.png)
+>>> [numero for numero in range(2, 50) if esPrimo(numero)]
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
-## Código desarrollado
+>>> primos(50)
+(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
 
-A continuación se incluye el contenido completo del fichero `primos.py`:
+>>> descompon(36 * 175 * 143)
+(2, 2, 3, 3, 5, 5, 7, 11, 13)
 
-```python
+>>> mcm(90, 14)
+630
+
+>>> mcd(924, 780)
+12
+
+>>> mcm(42, 60, 70, 63)
+1260
+
+>>> mcd(840, 630, 1050, 1470)
+210
+"""
+
 import doctest
 import math
 
@@ -125,5 +144,3 @@ def mcd(*numeros):
 
 if __name__ == "__main__":
     doctest.testmod(verbose=True)
-    
-```
