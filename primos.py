@@ -1,21 +1,9 @@
-# práctica 2 APA: Martina Vermiglio Mas
-
-## ejecución de los tests unitarios: 
-
-![resultado de los tests, primera imagen](testp2_1.jpg)
-
-![resultado de los tests, segunda imagen](testp2_2.jpg)
-
-![resultado de los tests, tercera imagen](testp2_3.jpg)
-
-## código desarrollado en primos.py 
-```python
 """
 primos.py: módulo de gestión de números primos
 programa hecho por Martina Vermiglio Mas
 
-Tests unitarios globales:
->>> [numero for numero in range(2, 50) if esPrimo(numero)]
+tests unitarios globales:
+>>> [numero for numero in range(2, 50) if esprimo(numero)]
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
 >>> primos(50)
@@ -37,17 +25,17 @@ Tests unitarios globales:
 210
 """
 
-def esPrimo(numero):
+def esprimo(numero):
     """
-    Devuelve True si su argumento es primo, y False si no lo es.
+    devuelve True si su argumento es primo, y False si no lo es.
     
-    >>> esPrimo(97)
+    >>> esprimo(97)
     True
-    >>> esPrimo(91)
+    >>> esprimo(91)
     False
     """
     if not isinstance(numero, int) or numero <= 1:
-        raise TypeError("El argumento debe ser un número natural mayor que 1")
+        raise TypeError("el argumento debe ser un número natural mayor que 1")
     
     for i in range(2, int(numero**0.5) + 1):
         if numero % i == 0:
@@ -55,11 +43,11 @@ def esPrimo(numero):
     return True
 
 def primos(numero):
-    """Devuelve una tupla con todos los números primos menores que su argumento."""
-    return tuple(n for n in range(2, numero) if esPrimo(n))
+    """devuelve una tupla con todos los números primos menores que su argumento."""
+    return tuple(n for n in range(2, numero) if esprimo(n))
 
 def descompon(numero):
-    """Devuelve una tupla con la descomposición en factores primos de su argumento."""
+    """devuelve una tupla con la descomposición en factores primos de su argumento."""
     factores = []
     d = 2
     n = numero
@@ -71,7 +59,7 @@ def descompon(numero):
     return tuple(factores)
 
 def _contar_factores(n):
-    """Función auxiliar para obtener un diccionario de factor:exponente."""
+    """función auxiliar para obtener un diccionario de factor:exponente."""
     f = descompon(n)
     conteo = {}
     for factor in f:
@@ -79,34 +67,34 @@ def _contar_factores(n):
     return conteo
 
 def mcm(*numeros):
-    """Devuelve el mínimo común múltiplo de sus argumentos basados en factores primos."""
-    # Se obtienen los diccionarios de factores de cada número
+    """devuelve el mínimo común múltiplo de sus argumentos basados en factores primos."""
+    # se obtienen los diccionarios de factores de cada número
     diccionarios = [_contar_factores(n) for n in numeros]
     
-    # Todos los factores primos que aparecen al menos una vez
+    # todos los factores primos que aparecen al menos una vez
     todos_factores = set()
     for d in diccionarios:
         todos_factores.update(d.keys())
         
     resultado = 1
     for f in todos_factores:
-        # MCM: comunes y no comunes al mayor exponente
+        # mcm: comunes y no comunes al mayor exponente
         max_exp = max(d.get(f, 0) for d in diccionarios)
         resultado *= (f ** max_exp)
     return resultado
 
 def mcd(*numeros):
-    """Devuelve el máximo común divisor de sus argumentos basados en factores primos."""
+    """devuelve el máximo común divisor de sus argumentos basados en factores primos."""
     diccionarios = [_contar_factores(n) for n in numeros]
     
-    # Factores comunes (están en el primer número y en todos los demás)
+    # factores comunes (están en el primer número y en todos los demás)
     comunes = set(diccionarios[0].keys())
     for d in diccionarios[1:]:
         comunes &= set(d.keys())
         
     resultado = 1
     for f in comunes:
-        # MCD: comunes al menor exponente
+        # mcd: comunes al menor exponente
         min_exp = min(d.get(f, 0) for d in diccionarios)
         resultado *= (f ** min_exp)
     return resultado
@@ -114,4 +102,3 @@ def mcd(*numeros):
 if __name__ == "__main__":
     from doctest import testmod
     testmod(verbose=True)
-
