@@ -1,16 +1,3 @@
-# Segunda tarea de APA 2026: Manejo de números primos
-
-**Nombre:** Sandra Cots Agüera
-
-## 📊 Ejecución de los tests unitarios
-A continuación se muestra la captura de pantalla de la ejecución del fichero `primos.py` con la opción verbosa (`-v`), confirmando que todas las funciones pasan los tests requeridos:
-
-![Resultado de los tests](test.png)
-
-## 💻 Código desarrollado
-El código se ha realizado siguiendo las normas de estilo **PEP-8** y sin utilizar bibliotecas externas prohibidas.
-
-```python
 """
 Nombre del alumno: Sandra Cots Agüera
 Tests unitarios:
