@@ -37,63 +37,51 @@ Tests unitarios:
 """
 
 def esPrimo(numero):
-    """Devuelve True si el argumento es primo. Requiere un natural mayor que 1."""
+    """Devuelve True si el argumento es primo. Requiere natural > 1."""
     if not isinstance(numero, int) or numero <= 1:
-        raise TypeError("El argumento debe ser un número natural mayor que 1.")
+        raise TypeError("Debe ser un número natural mayor que 1.")
     for i in range(2, int(numero**0.5) + 1):
         if numero % i == 0:
             return False
     return True
 
 def primos(numero):
-    """Devuelve una tupla con todos los números primos menores que su argumento."""
+    """Devuelve tupla con primos menores que el argumento."""
     return tuple(n for n in range(2, numero) if esPrimo(n))
 
 def descompon(numero):
-    """Devuelve una tupla con la descomposición en factores primos de su argumento."""
-    factores = []
-    divisor = 2
-    temp = numero
-    while temp > 1:
-        while temp % divisor == 0:
-            factores.append(divisor)
-            temp //= divisor
-        divisor += 1
-    return tuple(factores)
+    """Descomposición en factores primos."""
+    f, d, n = [], 2, numero
+    while n > 1:
+        while n % d == 0:
+            f.append(d)
+            n //= d
+        d += 1
+    return tuple(f)
 
 def mcd(*numeros):
-    """Calcula el máximo común divisor para un número arbitrario de argumentos."""
+    """Máximo Común Divisor de n argumentos."""
     from collections import Counter
-    if not numeros: return None
-    
-    # Descomponemos el primer número para comparar
-    res_counts = Counter(descompon(numeros[0]))
-    
+    res = Counter(descompon(numeros[0]))
     for n in numeros[1:]:
-        counts = Counter(descompon(n))
-        for factor in res_counts:
-            res_counts[factor] = min(res_counts[factor], counts[factor])
-            
-    mcd_val = 1
-    for factor, exponente in res_counts.items():
-        mcd_val *= (factor ** exponente)
-    return mcd_val
+        c = Counter(descompon(n))
+        for k in res:
+            res[k] = min(res[k], c[k])
+    total = 1
+    for k, v in res.items(): total *= k**v
+    return total
 
 def mcm(*numeros):
-    """Calcula el mínimo común múltiplo para un número arbitrario de argumentos."""
+    """Mínimo Común Múltiplo de n argumentos."""
     from collections import Counter
-    if not numeros: return None
-    
-    max_counts = Counter()
+    res = Counter()
     for n in numeros:
-        counts = Counter(descompon(n))
-        for factor, exponente in counts.items():
-            max_counts[factor] = max(max_counts[factor], exponente)
-            
-    mcm_val = 1
-    for factor, exponente in max_counts.items():
-        mcm_val *= (factor ** exponente)
-    return mcm_val
+        c = Counter(descompon(n))
+        for k, v in c.items():
+            res[k] = max(res[k], v)
+    total = 1
+    for k, v in res.items(): total *= k**v
+    return total
 
 if __name__ == "__main__":
     import doctest
