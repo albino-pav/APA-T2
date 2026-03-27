@@ -1,6 +1,6 @@
 # Segunda tarea de APA 2026: Manejo de números primos
 
-**Nombre:** Fulano Mengano Zutano
+**Nombre:** Sandra Cots Agüera
 
 ## 📊 Ejecución de los tests unitarios
 A continuación se muestra la captura de pantalla de la ejecución del fichero `primos.py` con la opción verbosa (`-v`), confirmando que todas las funciones pasan los tests requeridos:
@@ -12,7 +12,7 @@ El código se ha realizado siguiendo las normas de estilo **PEP-8** y sin utiliz
 
 ```python
 """
-Nombre del alumno: Fulano Mengano Zutano
+Nombre del alumno: Sandra Cots Agüera
 Tests unitarios:
 >>> [numero for numero in range(2, 50) if esPrimo(numero)]
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
