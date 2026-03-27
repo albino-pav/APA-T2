@@ -22,7 +22,7 @@
 > [!Important]
 > Introduzca a continuación su nombre y apellidos:
 >
-> Fulano Mengano Zutano
+> Xavier Fernández Rodriguez
 
 ## Fichero `primos.py`
 
