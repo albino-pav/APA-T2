@@ -1,108 +1,98 @@
-# Segunda tarea de APA 2026: Manejo de números primos
+# APA-T2
+**Estudiante:** Albert Blázquez Badenas
 
-> [!Caution]
->
-> El objetivo de esta tarea es manejar los tipos de datos y las estructuras de control de flujo de
-> Python. Existen bibliotecas que resuelven los apartados del enunciado de una manera más eficiente
-> y, sin duda, más sencilla, pero su uso está prohibido.
->
-> Además, se valorará también el uso de Markdown en la redacción del fichero README.md; en concreto,
-> la inclusión de código fuente con las herramientas propias de Markdown para su realce sintáctico, y
-> la inclusión de imágenes con las capturas de pantalla solicitadas. El fichero README.md deberá ser
-> visualizado correctamente desde la página principal del repositorio GitHub del alumno sin ninguna
-> intervención por parte del profesor.
->
-> Dispone del fichero MARKDOWN.md con información básica para el uso de Markdown, así como con enlaces
-> a la documentación oficial del mismo.
->
-> ¿Quiere saber más?, consulte con el profesorado.
-  
-## Nom i cognoms
+---
 
-> [!Important]
-> Introduzca a continuación su nombre y apellidos:
->
-> Fulano Mengano Zutano
+## Descripción del proyecto
+Este repositorio contiene la implementación de funciones en Python para el manejo de números naturales, centrada en la identificación de números primos, descomposiciones factoriales y el cálculo de **Máximo Común Divisor (MCD)** y **Mínimo Común Múltiplo (mcm)** para un número arbitrario de argumentos.
 
-## Fichero `primos.py`
+---
 
-- El alumno debe escribir el fichero `primos.py` que incorporará distintas funciones relacionadas con el manejo
-  de los números primos.
+## Ejecución de los tests unitarios
+Para verificar el correcto funcionamiento de las funciones, se han incluido **doctests** en el docstring del fichero. A continuación, se muestra la captura de pantalla de la ejecución en modo verboso (`python primos.py -v`):
 
-- El fichero debe incluir una cadena de documentación que incluirá el nombre del alumno y los tests unitarios
-  de las funciones incluidas.
+![Ejecución de tests unitarios](prueba2-APA.png)
+![Ejecución de tests unitarios](prueba1-APA.png)
 
-- Cada función deberá incluir su propia cadena de documentación que indicará el cometido de la función, los
-  argumentos de la misma y la salida proporcionada.
+---
 
-- Se valorará lo pythónico de la solución; en concreto, su claridad y sencillez, y el uso de los estándares marcados
-  por PEP-8. También se valorará su eficiencia computacional.
+## Código Fuente (`primos.py`)
 
-### Determinación de la *primalidad* y descomposición de un número en factores primos
+A continuación se adjunta el código desarrollado con el realce sintáctico correspondiente:
 
-Incluya en el fichero `primos.py` las tres funciones siguientes:
+```python
+"""
+Manejo de números primos
+Alumno: Albert Blázquez Badenas
 
-- `esPrimo(numero)`   Devuelve `True` si su argumento es primo, y `False` si no lo es.
-  - Se debe considerar que `numero` es un número natural y mayor que uno.
-  - En caso contrario, la función debe elevar la excepción `TypeError` y finalizar la ejecución.
-- `primos(numero)`    Devuelve una **tupla** con todos los números primos menores que su argumento.
-- `descompon(numero)` Devuelve una **tupla** con la descomposición en factores primos de su argumento.
+Tests unitarios:
+>>> [ numero for numero in range(2, 50) if esPrimo(numero) ]
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
-### Obtención del mínimo común múltiplo y el máximo común divisor
+>>> primos(50)
+(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
 
-Usando las tres funciones del apartado anterior (y cualquier otra que considere conveniente añadir), escriba otras
-dos que calculen el máximo común divisor y el mínimo común múltiplo de sus argumentos:
+>>> descompon(36 * 175 * 143)
+(2, 2, 3, 3, 5, 5, 7, 11, 13)
 
-- `mcm(numero1, numero2)`:  Devuelve el mínimo común múltiplo de sus argumentos.
-- `mcd(numero1, numero2)`:  Devuelve el máximo común divisor de sus argumentos.
+>>> mcm(90, 14)
+630
 
-Estas dos funciones deben cumplir las condiciones siguientes:
+>>> mcd(924, 780)
+12
 
-- Aunque se trate de una solución sub-óptima, en ambos casos deberá partirse de la descomposición en factores
-  primos de los argumentos usando las funciones del apartado anterior.
+>>> mcm(42, 60, 70, 63)
+1260
 
-- Aunque también sea sub-óptimo desde el punto de vista de la programación, ninguna de las dos funciones puede
-  depender de la otra; cada una debe programarse por separado.
+>>> mcd(840, 630, 1050, 1470)
+210
+"""
 
-### Obtención del mínimo común múltiplo y el máximo común divisor para un número arbitrario de argumentos
+def esPrimo(numero):
+    if not isinstance(numero, int) or numero <= 1:
+        raise TypeError("El argumento debe ser un número natural mayor que 1.")
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
 
-Modifique las funciones `mcm()` y `mcd()`, para que calculen el mínimo común múltiplo y el máximo común divisor
-para un número arbitrario de argumentos:
+def primos(numero):
+    return tuple(n for n in range(2, numero) if esPrimo(n))
 
-- `mcm(*numeros)`:  Devuelve el mínimo común múltiplo de sus argumentos.
-- `mcd(*numeros)`:  Devuelve el máximo común divisor de sus argumentos.
+def descompon(numero):
+    factores = []
+    d = 2
+    n = numero
+    while n > 1:
+        if n % d == 0:
+            factores.append(d)
+            n //= d
+        else:
+            d += 1
+    return tuple(factores)
 
-### Tests unitarios
+def mcd(*numeros):
+    if not numeros: return None
+    descs = [descompon(n) for n in numeros]
+    comunes = set(descs[0])
+    for d in descs[1:]:
+        comunes &= set(d)
+    res = 1
+    for f in comunes:
+        res *= (f ** min(d.count(f) for d in descs))
+    return res
 
-La cadena de documentación del fichero debe incluir los tests unitarios de las cinco funciones. En concreto, deberán
-comprobarse las siguientes condiciones:
+def mcm(*numeros):
+    if not numeros: return None
+    descs = [descompon(n) for n in numeros]
+    todos = set()
+    for d in descs:
+        todos.update(d)
+    res = 1
+    for f in todos:
+        res *= (f ** max(d.count(f) for d in descs))
+    return res
 
-- `esPrimo(numero)`:  Al ejecutar `[ numero for numero in range(2, 50) if esPrimo(numero) ]`, la salida debe ser
-                      `[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]`.
-- `primos(numeor)`: Al ejecutar `primos(50)`, la salida debe ser `(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)`.
-- `descompon(numero)`: Al ejecutar `descompon(36 * 175 * 143)`, la salida debe ser `(2, 2, 3, 3, 5, 5, 7, 11, 13)`.
-- `mcm(num1, num2)`: Al ejecutar `mcm(90, 14)`, la salida debe ser `630`.
-- `mcd(num1, num2)`: Al ejecutar `mcd(924, 780)`, la salida debe ser `12`.
-- `mcm(numeros)`: Al ejecutar `mcm(42, 60, 70, 63)`, la salida debe ser `1260`.
-- `mcd(numeros)`: Al ejecutar `mcd(840, 630, 1050, 1470)`, la salida debe ser `210`.
-
-### Entrega
-
-#### Ejecución de los tests unitarios
-
-Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
-*verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
-
-#### Código desarrollado
-
-Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
-realce sintáctico en Python del mismo.
-
-#### Subida del resultado al repositorio GitHub ¿y *pull-request*?
-
-El fichero `primos.py`, la imagen con la ejecución de los tests unitarios y este mismo fichero, `README.md`, deberán
-subirse al repositorio GitHub mediante la orden `git push`. Si los profesores de la asignatura consiguen montar el
-sistema a tiempo, la entrega se formalizará realizando un *pull-request* al propietario del repositorio original.
-
-El fichero `README.md` deberá respetar las reglas de los ficheros Markdown y visualizarse correctamente en el repositorio,
-incluyendo la imagen con la ejecución de los tests unitarios y el realce sintáctico del código fuente insertado.
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(verbose=True)
