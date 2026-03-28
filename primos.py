@@ -1,36 +1,3 @@
-# Segunda entrega de APA: Manejo de números primos
-
-**Alumno:** Marc Grau Casado
-
-## Descripción de la práctica
-
-En esta práctica se ha desarrollado el fichero `primos.py`, que implementa distintas funciones relacionadas con el manejo de números primos, siguiendo las restricciones indicadas en el enunciado y evitando el uso de bibliotecas externas que resuelvan directamente el problema.
-
-Las funciones implementadas son las siguientes:
-
-- `esPrimo(numero)`: determina si un número natural mayor que uno es primo.
-- `primos(numero)`: devuelve una tupla con todos los números primos menores que el valor indicado.
-- `descompon(numero)`: devuelve la descomposición en factores primos de un número.
-- `mcm(*numeros)`: calcula el mínimo común múltiplo de un número arbitrario de argumentos.
-- `mcd(*numeros)`: calcula el máximo común divisor de un número arbitrario de argumentos.
-
-La implementación se ha realizado buscando claridad, sencillez y corrección, respetando un estilo de programación legible y próximo a las recomendaciones de PEP-8. Para el cálculo del `mcm` y del `mcd` se ha partido, tal como exige el enunciado, de la descomposición en factores primos de los argumentos.
-
-## Entrega
-
-### Ejecución de los tests unitarios
-
-A continuación se inserta una captura de pantalla que muestra el resultado de ejecutar el fichero `primos.py` con la opción verbosa, de manera que se visualiza correctamente la ejecución de los tests unitarios incluidos en la cadena de documentación del módulo.
-
-![Ejecución de los tests unitarios](tests_primos.png)
-
-![Ejemplos de uso del módulo primos](test2_primos.png)
-
-### Código desarrollado
-
-A continuación se inserta el contenido del fichero `primos.py`, utilizando un bloque de código Markdown con realce sintáctico de Python.
-
-```python
 """
 Autor: Marc Grau Casado
 
@@ -233,11 +200,3 @@ def mcd(*numeros):
 
 if __name__ == "__main__":
     doctest.testmod(verbose=True)
-```
-
-## Subida del resultado al repositorio GitHub ¿y pull-request?
-
-El fichero `primos.py`, la imagen con la ejecución de los tests unitarios y este mismo fichero `README.md` han sido incorporados al repositorio GitHub para su entrega y revisión.
-
-El fichero `README.md` respeta la sintaxis de Markdown y se visualiza correctamente en el repositorio, incluyendo la imagen con la ejecución de los tests unitarios y el realce sintáctico del código fuente insertado.
-
