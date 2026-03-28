@@ -24,6 +24,8 @@ A continuación se inserta una captura de pantalla que muestra el resultado de e
 
 ![Ejecución de los tests unitarios](tests_primos.png)
 
+![Ejemplos de uso del módulo primos](test2_primos.png)
+
 ### Código desarrollado
 
 A continuación se inserta el contenido del fichero `primos.py`, utilizando un bloque de código Markdown con realce sintáctico de Python.
