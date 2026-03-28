@@ -239,4 +239,3 @@ El fichero `primos.py`, la imagen con la ejecución de los tests unitarios y est
 
 El fichero `README.md` respeta la sintaxis de Markdown y se visualiza correctamente en el repositorio, incluyendo la imagen con la ejecución de los tests unitarios y el realce sintáctico del código fuente insertado.
 
-En caso de que la formalización definitiva de la entrega requiera la realización de un *pull-request* al repositorio original, este podrá efectuarse posteriormente siguiendo las indicaciones del profesorado.
