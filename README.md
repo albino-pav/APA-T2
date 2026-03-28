@@ -22,7 +22,7 @@
 > [!Important]
 > Introduzca a continuación su nombre y apellidos:
 >
-> Fulano Mengano Zutano
+> Bruno Mario Daidone Rossini
 
 ## Fichero `primos.py`
 
