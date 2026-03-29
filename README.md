@@ -1,1 +1,0 @@
-# Segunda-tarea-de-APA-2026-Aitana-Ortega
