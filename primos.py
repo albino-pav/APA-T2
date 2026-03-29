@@ -1,37 +1,8 @@
-# Segunda tarea de APA 2026: Manejo de números primos
-
-## Nom i cognoms
-
-Pere Villaronga Folguera
-
----
-
-## Ejecución de los tests unitarios
-
-A continuación se detallan las capturas de pantalla con los resultados de las pruebas realizadas para validar el correcto funcionamiento del módulo.
-
-### 1. Pruebas manuales e individuales
-Se han verificado todas las funciones del módulo directamente en la consola interactiva de Python (`>>>`), ejecutando los ejemplos solicitados en el enunciado uno por uno.
-
-![Pruebas manuales e individuales](test_individual.jpeg)
-
-### 2. Pruebas automatizadas con `doctest` (modo verboso)
-Para cumplir con los requisitos de la entrega, se ha ejecutado el fichero `primos.py` utilizando el módulo nativo de Python `doctest` con la opción `-v` (verboso). Esta captura muestra cómo se ejecutan y superan automáticamente los tests embebidos en la documentación del código.
-
-![Pruebas automatizadas con doctest](test_doctest.jpeg)
-
----
-
-## Código desarrollado
-
-Este es el contenido íntegro del fichero `primos.py` desarrollado para esta práctica:
-
-```python
 """
 Módulo para el manejo de números primos, cálculo del MCM y MCD.
 Alumno: Fulano Mengano Zutano
 
-Tests unitarios (doctest):
+Tests unitarios:
 >>> [ numero for numero in range(2, 50) if esPrimo(numero) ]
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
@@ -58,6 +29,7 @@ def esPrimo(numero):
     """Evalúa si un argumento (int) es un número natural primo, devolviendo un bool."""
     if not isinstance(numero, int) or numero <= 1:
         raise TypeError("El argumento debe ser un número natural mayor que uno.")
+    # all() devuelve True solo si ninguna división da resto 0
     return all(numero % i != 0 for i in range(2, int(numero**0.5) + 1))
 
 def primos(numero):
@@ -83,6 +55,7 @@ def mcm(*numeros):
     
     resultado = 1
     for f in factores_unicos:
+        # Buscamos el exponente máximo de este factor entre todos los números
         resultado *= f ** max(d.count(f) for d in descomposiciones)
     return resultado
 
@@ -94,10 +67,10 @@ def mcd(*numeros):
     
     resultado = 1
     for f in factores_base:
+        # Buscamos el exponente mínimo de este factor común entre todos los números
         resultado *= f ** min(d.count(f) for d in descomposiciones)
     return resultado
 
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-```
