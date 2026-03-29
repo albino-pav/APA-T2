@@ -21,8 +21,8 @@
 
 > [!Important]
 > Introduzca a continuación su nombre y apellidos:
->
-> Fulano Mengano Zutano
+> Ainhoa Dumitru
+
 
 ## Fichero `primos.py`
 
