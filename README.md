@@ -22,7 +22,7 @@
 > [!Important]
 > Introduzca a continuación su nombre y apellidos:
 >
-> Fulano Mengano Zutano
+> Daniel Morera Torra
 
 ## Fichero `primos.py`
 
@@ -93,10 +93,133 @@ comprobarse las siguientes condiciones:
 Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
+<img width="382" height="682" alt="image" src="https://github.com/user-attachments/assets/506b9ec6-c326-46d3-89fe-c48f18ad7248" />
+
+
+<img width="302" height="520" alt="image" src="https://github.com/user-attachments/assets/e5024325-d3fa-4d5f-b56f-67a3b4ab2cc7" />
+
+
+
+
+
 #### Código desarrollado
 
 Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
 realce sintáctico en Python del mismo.
+
+## Código desarrollado
+```python
+
+"""
+Manejo de números primos - Segunda tarea de APA 2026
+Autor: Daniel Morera Torra
+
+>>> [ numero for numero in range(2, 50) if esPrimo(numero) ]
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+
+>>> primos(50)
+(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
+
+>>> descompon(36 * 175 * 143)
+(2, 2, 3, 3, 5, 5, 7, 11, 13)
+
+>>> mcm(90, 14)
+630
+
+>>> mcd(924, 780)
+12
+
+>>> mcm(42, 60, 70, 63)
+1260
+
+>>> mcd(840, 630, 1050, 1470)
+210
+"""
+
+
+def esPrimo(numero):
+    """Devuelve True si numero es primo, False si no lo es.
+    numero debe ser un entero mayor que 1, si no eleva TypeError.
+
+    >>> esPrimo(7)
+    True
+    >>> esPrimo(9)
+    False
+    """
+    if not isinstance(numero, int) or numero < 2:
+        raise TypeError("El número debe ser un natural mayor que uno")
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
+
+
+def primos(numero):
+    """Devuelve una tupla con los primos menores que numero.
+
+    >>> primos(10)
+    (2, 3, 5, 7)
+    """
+    return tuple(n for n in range(2, numero) if esPrimo(n))
+
+
+def descompon(numero):
+    """Devuelve una tupla con los factores primos de numero.
+
+    >>> descompon(12)
+    (2, 2, 3)
+    """
+    factores = []
+    divisor = 2
+    while numero > 1:
+        while numero % divisor == 0:
+            factores.append(divisor)
+            numero //= divisor
+        divisor += 1
+    return tuple(factores)
+
+
+def mcm(*numeros):
+    """Devuelve el mínimo común múltiplo de los argumentos.
+
+    >>> mcm(90, 14)
+    630
+    >>> mcm(42, 60, 70, 63)
+    1260
+    """
+    factores = {}
+    for n in numeros:
+        d = descompon(n)
+        for p in set(d):
+            factores[p] = max(factores.get(p, 0), d.count(p))
+    resultado = 1
+    for p, e in factores.items():
+        resultado *= p**e
+    return resultado
+
+
+def mcd(*numeros):
+    """Devuelve el máximo común divisor de los argumentos.
+
+    >>> mcd(924, 780)
+    12
+    >>> mcd(840, 630, 1050, 1470)
+    210
+    """
+    factores = {p: descompon(numeros[0]).count(p) for p in set(descompon(numeros[0]))}
+    for n in numeros[1:]:
+        d = descompon(n)
+        factores = {p: min(e, d.count(p)) for p, e in factores.items() if p in d}
+    resultado = 1
+    for p, e in factores.items():
+        resultado *= p**e
+    return resultado
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+```
 
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?
 
