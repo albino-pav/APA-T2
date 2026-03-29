@@ -22,7 +22,7 @@
 > [!Important]
 > Introduzca a continuación su nombre y apellidos:
 >
-> Fulano Mengano Zutano
+> Aitana Ortega Sánchez
 
 ## Fichero `primos.py`
 
