@@ -98,7 +98,7 @@ Inserte a continuación una captura de pantalla que muestre el resultado de ejec
 
 Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
 realce sintáctico en Python del mismo.
-'''c
+```c
 def esPrimo(numero):
     '''
     devuelve True si primo, False si no.(espero) 
@@ -173,7 +173,7 @@ def mcd(*numeros):
 
 import doctest
 doctest.testmod(verbose=True)
-'''
+```
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?
 
 El fichero `primos.py`, la imagen con la ejecución de los tests unitarios y este mismo fichero, `README.md`, deberán
