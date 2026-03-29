@@ -58,3 +58,76 @@ def primos(numero):
     """
     return tuple(n for n in range(2, numero) if esPrimo(n))
 
+
+def descompon(numero):
+    """
+    Devuelve una tupla con la descomposición en factores primos del número.
+
+    :param numero: entero mayor que 1
+    :return: tupla de factores primos
+    """
+    if not isinstance(numero, int) or numero <= 1:
+        raise TypeError("El número debe ser natural mayor que 1")
+
+    factores = []
+    divisor = 2
+
+    while numero > 1:
+        while numero % divisor == 0:
+            factores.append(divisor)
+            numero //= divisor
+        divisor += 1
+
+    return tuple(factores)
+
+def mcd(*numeros):
+    """
+    Devuelve el máximo común divisor de varios números.
+
+    :param numeros: enteros mayores que 1
+    :return: mcd
+    """
+    if not numeros:
+        raise TypeError("Debe proporcionar al menos un número")
+
+    from collections import Counter
+
+    # Descomposición del primer número
+    comunes = Counter(descompon(numeros[0]))
+
+    for numero in numeros[1:]:
+        factores = Counter(descompon(numero))
+        comunes &= factores  # intersección (mínimos)
+
+    resultado = 1
+    for factor, exponente in comunes.items():
+        resultado *= factor ** exponente
+
+    return resultado
+
+
+def mcm(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de varios números.
+
+    :param numeros: enteros mayores que 1
+    :return: mcm
+    """
+    if not numeros:
+        raise TypeError("Debe proporcionar al menos un número")
+
+    from collections import Counter
+
+    maximos = Counter()
+
+    for numero in numeros:
+        factores = Counter(descompon(numero))
+        for factor in factores:
+            maximos[factor] = max(maximos[factor], factores[factor])
+
+    resultado = 1
+    for factor, exponente in maximos.items():
+        resultado *= factor ** exponente
+
+    return resultado
+
