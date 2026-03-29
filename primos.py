@@ -24,3 +24,37 @@ Tests unitarios:
 >>> mcd(840, 630, 1050, 1470)
 210
 """
+
+
+def esPrimo(numero):
+    """
+    Devuelve True si el número es primo.
+
+    :param numero: entero mayor que 1
+    :return: True o False
+    """
+    if not isinstance(numero, int) or numero <= 1:
+        raise TypeError("El número debe ser natural mayor que 1")
+
+    if numero == 2:
+        return True
+
+    if numero % 2 == 0:
+        return False
+
+    for i in range(3, int(numero ** 0.5) + 1, 2):
+        if numero % i == 0:
+            return False
+
+    return True
+
+
+def primos(numero):
+    """
+    Devuelve una tupla con todos los números primos menores que numero.
+
+    :param numero: entero
+    :return: tupla de números primos
+    """
+    return tuple(n for n in range(2, numero) if esPrimo(n))
+
