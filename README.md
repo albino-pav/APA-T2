@@ -22,7 +22,7 @@
 > [!Important]
 > Introduzca a continuación su nombre y apellidos:
 >
-> Fulano Mengano Zutano
+> Daniel Morera Torra
 
 ## Fichero `primos.py`
 
