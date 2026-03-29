@@ -40,7 +40,7 @@ A continuación se presentan las capturas de pantalla que muestran el resultado 
 
 ![Resultado de los tests unitarios - Parte 2](C2.png)
 
-*(Nota: Asegúrate de que los archivos de imagen se llamen exactamente `tests_1.png` y `tests_2.png` en tu repositorio para que se visualicen correctamente)*.
+
 
 ### Código desarrollado (`primos.py`)
 
