@@ -1,24 +1,3 @@
-# Práctica 2: Manejo de números primos
-
-**Biel Piqué** 
-
-## Descripción de la tarea
-En esta práctica hemos implementado diversas funciones en Python para el manejo de números primos.
-
-El archivo `Primos.py` incluye funciones para:
-1.  **Determinar la primalidad** de un número.
-2.  Generar una **lista de números primos** menores que uno dado.
-3.  Obtener la **descomposición en factores primos**.
-4.  Calcular el **Mínimo Común Múltiplo (mcm)** y el **Máximo Común Divisor (mcd)** para un número arbitrario de argumentos.
-
-## Ejecución de los tests unitarios
-A continuación se muestra la captura de pantalla del resultado de ejecutar el fichero `Primos.py` con la opción verbosa (`-v`), demostrando que todas las funciones pasan los tests requeridos:
-
-<img src="Resultados.png" width="400">
-<img src="Resultados2.png" width="300">
-
-## Código desarrollado
-```python
 """
 Biel Piqué Marti
 
