@@ -90,8 +90,7 @@ comprobarse las siguientes condiciones:
 
 #### Ejecución de los tests unitarios
 
-Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
-*verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
+![Resultado de los tests unitarios](doctest.png)
 
 #### Código desarrollado
 
